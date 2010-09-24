@@ -1,0 +1,81 @@
+
+<p>
+  <b>Name:</b>
+  <%= @brand.name %>
+</p>
+<p>
+  <b>Address:</b>
+  <%= @brand.address %>
+</p>
+
+<p>
+  <b>Info:</b>
+  <%= @brand.info %>
+</p>
+
+<% if user_signed_in? and current_user.brand != @brand %>
+  <% if current_user.brand.friends.include?(@brand) == false and current_user.brand.requested_friends.include?(@brand) == false and current_user.brand.pending_friends.include?(@brand) == false %>
+  <%= link_to 'Add To Friend',  {:controller=> 'friendships', :action => 'create', :brand_id => current_user.brand , :friend_id => @brand}%> 
+  <% end %>
+<% end %>
+
+<h2>Friends</h2>
+<ul>
+  <% if @brand.friends.count == 0 %>
+    <td>No friends</td>
+  <% else %>
+    <% for friend in @brand.friends %> 
+      <li><%= friend.name %>
+      <% if user_signed_in? and current_user.brand == @brand %>
+        (<%= link_to "Remove", {:controller => 'friendships', :action => 'destroy', :brand_id => @brand, :friend_id => friend },  :method => :delete, :confirm => 'Are you sure?' %>)
+      <% end %>
+      </li>   
+    <% end %>
+  <% end %>
+</ul>
+
+<% if user_signed_in? and current_user.brand == @brand %>
+  <h2>Requested Friends</h2>
+  <ul>
+    <% if @brand.requested_friends.count == 0 %>
+      <td>No friend requests</td>
+    <% else %>
+      <% for friend in @brand.requested_friends %> 
+        <li><%= friend.name %>
+        (<%= link_to 'Cancel', {:controller => 'friendships', :action => 'destroy', :brand_id => @brand, :friend_id => friend }, :method => :delete, :confirm => 'Are you sure?' %>)
+      	</li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <h2>Pending Friends</h2>
+  <ul>
+    <% if @brand.pending_friends.count == 0 %>
+      <td>No pending friends</td>
+    <% else %>
+      <% for friend in @brand.pending_friends %> 
+        <li><%= friend.name %>
+        (<%= link_to 'Accept', {:controller => 'friendships', :action => 'update', :brand_id => @brand, :friend_id => friend } %>) |
+        (<%= link_to 'Reject', {:controller => 'friendships', :action => 'destroy', :brand_id => @brand, :friend_id => friend }, :method => :delete, :confirm => 'Reject friend request! Are you sure?' %>)
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <h2>Add New Friends</h2>
+  <ul>
+  <% @brands.each do |f| %>
+    <% if @brand != f %>
+	  <% if @brand.friends.include?(f) == false and @brand.requested_friends.include?(f) == false and @brand.pending_friends.include?(f) == false %>
+	    <li><%= f.name %> 
+	    <%= link_to 'Show',  {:controller=> 'brands', :action => 'show', :id => f} %> 
+	    <%= link_to 'Add',  {:controller=> 'friendships', :action => 'create', :brand_id => @brand , :friend_id => f}%> 
+	    </li>
+	  <% end %>
+    <% end %>
+  <% end %>
+  </ul><br>
+  <%= link_to 'Edit', edit_brand_path(@brand) %> |
+<% end %>
+
+<%= link_to 'Back', brands_path %>
