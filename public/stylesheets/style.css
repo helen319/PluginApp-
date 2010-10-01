@@ -1,0 +1,25 @@
+body {
+  margin: 0; }
+
+#user_nav {
+  overflow: hidden;
+  display: block;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  vertical-align: center;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 13px; }
+  #user_nav a {
+    color: white; }
+  #user_nav #logo {
+    overflow: hidden;
+    display: inline-block;
+    padding-left: 30px; }
+    #user_nav #logo img {
+      width: 120px; }
+  #user_nav #login_info {
+    display: inline-block;
+    float: right;
+    padding-right: 20px; }
