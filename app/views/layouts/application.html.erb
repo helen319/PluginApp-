@@ -6,8 +6,6 @@
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
-<%= flash[:notice] %> 
-<%= flash[:alert] %> 
 
 <body>
 <div id="user_nav">
@@ -20,7 +18,11 @@
       <%= link_to "Sign out", destroy_user_session_path %>
     </div>
   <% end %>
+
 </div>
+<br>
+<%= flash[:notice] %> 
+<%= flash[:alert] %> 
 <%= yield %>
 
 </body>

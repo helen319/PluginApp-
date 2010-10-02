@@ -41,19 +41,24 @@ class BrandsController < ApplicationController
   def edit
     @brand = Brand.find(params[:id])
   end
-
+  
   # POST /brands
   # POST /brands.xml
   def create
-    @brand = Brand.new(params[:brand])
-    current_user.brand = @brand
-    respond_to do |format|
-      if @brand.save
-        format.html { redirect_to(@brand, :notice => 'Brand was successfully created.') }
-        format.xml  { render :xml => @brand, :status => :created, :location => @brand }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @brand.errors, :status => :unprocessable_entity }
+    if current_user.brand != nil 
+      #current_user already have a existing brand.
+      flash[:alert] = "You already have a Brand, please Remove the previous one to create a new Brand."
+      redirect_to :controller => 'brands', :action => 'index'
+    else
+    @brand = current_user.create_brand(params[:brand])
+      respond_to do |format|
+        if @brand.save
+          format.html { redirect_to(@brand, :notice => 'Brand was successfully created.') }
+          format.xml  { render :xml => @brand, :status => :created, :location => @brand }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @brand.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

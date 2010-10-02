@@ -1,5 +1,6 @@
 body {
-  margin: 0; }
+  margin: 0; 
+  }
 
 #user_nav {
   overflow: hidden;
@@ -23,3 +24,5 @@ body {
     display: inline-block;
     float: right;
     padding-right: 20px; }
+
+

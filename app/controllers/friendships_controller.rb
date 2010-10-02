@@ -6,18 +6,22 @@ def create
   @friend = Brand.find(params[:friend_id])
   # check that current_brand do not have more than 5 friendships.
   if @brand.friends.count + @brand.requested_friends.count == 5
-    flash[:notice] = "Unable send request. You can not have more than 5 friendships."
+    flash[:alert] = "Unable send request. You can not have more than 5 friendships."
     redirect_to :controller => 'brands', :action => 'show', :id => @brand 
   # check that if friendship (accepted/requested/pending) already exist between brand+friend
   elsif @brand.friendships.find_by_friend_id(params[:friend_id]) != nil ||
           @friend.friendships.find_by_brand_id(params[:brand_id]) != nil
-    flash[:notice] = "Friendship already exists."
+    flash[:alert] = "Friendship already exists."
     redirect_to :controller => 'brands', :action => 'show', :id => @brand 
   else 
     @friendship1 = Friendship.create(:brand_id => @brand.id, :friend_id => @friend.id, :status => 'requested')
     @friendship2 = Friendship.create(:brand_id => @friend.id, :friend_id => @brand.id, :status => 'pending')
 
     if @friendship1.save && @friendship2.save
+      # send a friend_request email to @friend
+      @user_friend = User.find(@friend.user_id)
+      @brand_name = @brand.name
+      UserMailer.friend_request(@user_friend, @brand_name).deliver
       flash[:notice] = "Sent a request."
  	  redirect_to :controller => 'brands', :action => 'show', :id => @brand 
     else
@@ -32,7 +36,7 @@ def update
   @friend = Brand.find(params[:friend_id])
   # check that current_brand do not have more than 5 friendships.
   if @brand.friends.count + @brand.requested_friends.count == 5
-    flash[:notice] = "Unable send request. You can not have more than 5 friendships."
+    flash[:alert] = "Unable send request. You can not have more than 5 friendships."
     redirect_to :controller => 'brands', :action => 'show', :id => @brand 
   else 
     params[:friendship1] = {:brand_id => @brand.id, :friend_id => @friend.id, :status => 'accepted'}

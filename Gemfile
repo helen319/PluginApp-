@@ -7,6 +7,13 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'haml'
 
+group :test, :development do
+  gem "rspec-rails", ">= 2.0.0.beta.22"
+end
+
+gem "autotest"
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_one :brand
+  has_one :brand,  :dependent => :destroy
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable (:confirmable)
