@@ -1,4 +1,6 @@
 class Brand < ActiveRecord::Base
+  #belongs_to :user
+
   validates_uniqueness_of :name, :case_sensitive => false 
   validates_uniqueness_of :address, :case_sensitive => false
   validates :name, :presence => true,
