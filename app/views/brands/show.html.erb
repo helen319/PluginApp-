@@ -13,11 +13,6 @@
   <%= @brand.info %>
 </p>
 
-<% if user_signed_in? and current_user.brand != @brand %>
-  <% if current_user.brand.friends.include?(@brand) == false and current_user.brand.requested_friends.include?(@brand) == false and current_user.brand.pending_friends.include?(@brand) == false %>
-  <%= link_to 'Add To Friend',  {:controller=> 'friendships', :action => 'create', :brand_id => current_user.brand , :friend_id => @brand}%> 
-  <% end %>
-<% end %>
 
 <h2>Friends</h2>
 <ul>
@@ -26,7 +21,7 @@
   <% else %>
     <% for friend in @brand.friends %> 
       <li><%= friend.name %>
-      <% if user_signed_in? and current_user.brand == @brand %>
+      <% if user_signed_in? and current_user.brands.include?(@brand) %>
         (<%= link_to "Remove", {:controller => 'friendships', :action => 'destroy', :brand_id => @brand, :friend_id => friend },  :method => :delete, :confirm => 'Are you sure?' %>)
       <% end %>
       </li>   
@@ -34,7 +29,7 @@
   <% end %>
 </ul>
 
-<% if user_signed_in? and current_user.brand == @brand %>
+<% if user_signed_in? and @brand.user == current_user %>
   <h2>Requested Friends</h2>
   <ul>
     <% if @brand.requested_friends.count == 0 %>

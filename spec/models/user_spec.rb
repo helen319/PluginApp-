@@ -71,7 +71,7 @@ describe User do
 
   it "should create a new brand given valid attributes" do
     valid_user = User.new(@attr)
-    valid_brand = valid_user.create_brand({ :name => "Example", :address => "www.example.com"})
+    valid_brand = valid_user.brands.build({ :name => "Example", :address => "www.example.com"})
     valid_brand.should be_valid
   end
   
@@ -79,12 +79,18 @@ describe User do
     
     before(:each) do
       @user = User.new(@attr)
+      @brand = @user.brands.build({ :name => "Example", :address => "www.example.com"})
     end
     
-    it "should have a brand attribute" do
-      @user.should respond_to(:brand)
+    it "should have a brands attribute" do
+      @user.should respond_to(:brands)
     end
   
+    it "should destroy associated brands" do
+      @user.destroy
+      Brand.find_by_id(@brand.id).should be_nil
+    end
+    
   end
 
 end

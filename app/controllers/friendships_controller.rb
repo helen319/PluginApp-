@@ -14,14 +14,14 @@ def create
     flash[:alert] = "Friendship already exists."
     redirect_to :controller => 'brands', :action => 'show', :id => @brand 
   else 
-    @friendship1 = Friendship.create(:brand_id => @brand.id, :friend_id => @friend.id, :status => 'requested')
-    @friendship2 = Friendship.create(:brand_id => @friend.id, :friend_id => @brand.id, :status => 'pending')
+    @friendship1 = @brand.friendships.build(:brand_id => @brand.id, :friend_id => @friend.id, :status => 'requested')
+    @friendship2 = @friend.friendships.build(:brand_id => @friend.id, :friend_id => @brand.id, :status => 'pending')
 
     if @friendship1.save && @friendship2.save
       # send a friend_request email to @friend
       @user_friend = User.find(@friend.user_id)
       @brand_name = @brand.name
-      UserMailer.friend_request(@user_friend, @brand_name).deliver
+      UserMailer.friend_request(@user_friend ,@brand, @brand_name).deliver
       flash[:notice] = "Sent a request."
  	  redirect_to :controller => 'brands', :action => 'show', :id => @brand 
     else

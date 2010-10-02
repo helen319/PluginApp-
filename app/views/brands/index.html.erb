@@ -3,17 +3,14 @@
 
 <% if user_signed_in? %>
   <br>
-  <% if current_user.brand == nil %>
-    <td><%= link_to 'New Brand', new_brand_path %></td>
-  <% else %>
-     <h2>Your Brand:</h2>
-    <td><%= current_user.brand.name %></td>
-    <td><%= current_user.brand.address %></td> 
-    <td><%= link_to 'Show', current_user.brand %></td>
-    <td><%= link_to 'Edit', edit_brand_path(current_user.brand) %></td>
-    <td><%= link_to 'Destroy', current_user.brand, :confirm => 'Are you sure?', :method => :delete %></td>
-
-  <% end %>
+     <h2>Your Brands: </h2> <h4><%= link_to 'New Brand', new_brand_path %></h4>
+     <% current_user.brands.each do |b| %>
+       <td><%= b.name %></td>
+       <td><%= b.address %></td> 
+       <td><%= link_to 'Show', b %></td>
+       <td><%= link_to 'Edit', edit_brand_path(b) %></td>
+       <td><%= link_to 'Destroy', b, :confirm => 'Are you sure?', :method => :delete %></td><br>
+     <% end %>
 <% end %>
 <br>
 <br>

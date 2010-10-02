@@ -6,7 +6,7 @@ class BrandsController < ApplicationController
   # GET /brands.xml
   def index
     @brands = Brand.all
-    if user_signed_in? and current_user.brand == nil 
+    if user_signed_in? and current_user.brands.length == 0
       redirect_to :controller => 'brands', :action => 'new'
     else 
       respond_to do |format|
@@ -45,12 +45,7 @@ class BrandsController < ApplicationController
   # POST /brands
   # POST /brands.xml
   def create
-    if current_user.brand != nil 
-      #current_user already have a existing brand.
-      flash[:alert] = "You already have a Brand, please Remove the previous one to create a new Brand."
-      redirect_to :controller => 'brands', :action => 'index'
-    else
-    @brand = current_user.create_brand(params[:brand])
+    @brand = current_user.brands.build(params[:brand])
       respond_to do |format|
         if @brand.save
           format.html { redirect_to(@brand, :notice => 'Brand was successfully created.') }
@@ -59,7 +54,6 @@ class BrandsController < ApplicationController
           format.html { render :action => "new" }
           format.xml  { render :xml => @brand.errors, :status => :unprocessable_entity }
         end
-      end
     end
   end
 
