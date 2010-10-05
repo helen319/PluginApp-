@@ -4,6 +4,7 @@ Newapp::Application.routes.draw do
   # root :to => "brands#index" 
   root :to => "home#index" 
   resources :brands
+  match ':controller/:action/:brand_id:friend_id'
   match ':controller(/:action(/:id))'
   match ':controller(/:action(/:id(.:format)))'
    

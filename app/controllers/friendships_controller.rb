@@ -21,7 +21,7 @@ def create
       # send a friend_request email to @friend
       @user_friend = User.find(@friend.user_id)
       @brand_name = @brand.name
-      UserMailer.friend_request(@user_friend ,@brand, @brand_name).deliver
+      UserMailer.friend_request(@user_friend, @brand ,@brand_name).deliver
       flash[:notice] = "Sent a request."
  	  redirect_to :controller => 'brands', :action => 'show', :id => @brand 
     else
@@ -39,8 +39,8 @@ def update
     flash[:alert] = "Unable send request. You can not have more than 5 friendships."
     redirect_to :controller => 'brands', :action => 'show', :id => @brand 
   else 
-    params[:friendship1] = {:brand_id => @brand.id, :friend_id => @friend.id, :status => 'accepted'}
-    params[:friendship2] = {:brand_id => @friend.id, :friend_id => @brand.id, :status => 'accepted'}
+    params[:friendship1] = {:brand_id => @brand.id, :friend_id => @friend.id, :status => 'accepted', :count_index => 0 }
+    params[:friendship2] = {:brand_id => @friend.id, :friend_id => @brand.id, :status => 'accepted', :count_index => 0 }
     @friendship1 = Friendship.find_by_brand_id_and_friend_id(@brand.id, @friend.id)
     @friendship2 = Friendship.find_by_brand_id_and_friend_id(@friend.id, @brand.id)
     if @friendship1.update_attributes(params[:friendship1]) && @friendship2.update_attributes(params[:friendship2])

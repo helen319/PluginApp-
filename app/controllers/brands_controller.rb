@@ -21,6 +21,15 @@ class BrandsController < ApplicationController
   def show
     @brand = Brand.find(params[:id])
     @brands = Brand.all
+    @friends = @brand.friends
+    @friendships_as_brand = []
+    @friendships_as_friend = []
+    for f in @friends
+      friendship1 = Friendship.find_by_brand_id_and_friend_id(@brand.id, f.id)
+      friendship2 = Friendship.find_by_brand_id_and_friend_id(f.id, @brand.id)
+      @friendships_as_brand << friendship1
+      @friendships_as_friend << friendship2
+    end    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @brand }
@@ -80,8 +89,32 @@ class BrandsController < ApplicationController
     @brand.destroy
 
     respond_to do |format|
-      format.html { redirect_to(brands_url) }
+      format.html { redirect_to(:back) }
       format.xml  { head :ok }
+    end
+  end
+  
+    #shows all friends of @brand, max 5 friends
+  def show_friends
+    @brand = Brand.find(params[:id])
+    respond_to do |format|
+      format.html # show_friends.html.erb
+      format.xml  { render :xml => @brand }
+    end
+  end
+  
+  def add_count
+    @brand = Brand.find(params[:brand_id])
+    @friend = Brand.find(params[:friend_id])
+    @friendship = Friendship.find_by_brand_id_and_friend_id(@brand.id, @friend.id)
+    temp = @friendship.count_index
+    params[:friendship] = {:brand_id => @brand.id, :friend_id => @friend.id, :status => 'accepted', :count_index => temp+1}
+    if @friendship.update_attributes(params[:friendship]) 
+		flash[:notice] = 'Count updated.'
+		redirect_to :controller=> 'brands', :action => 'show', :id => @friend
+	else  
+		flash[:notice] = "failed update count."  
+		redirect_to :controller=> 'brands', :action => 'show_friends', :id => @brand
     end
   end
 end
