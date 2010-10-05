@@ -110,7 +110,7 @@ class BrandsController < ApplicationController
     temp = @friendship.count_index
     params[:friendship] = {:brand_id => @brand.id, :friend_id => @friend.id, :status => 'accepted', :count_index => temp+1}
     if @friendship.update_attributes(params[:friendship]) 
-		flash[:notice] = 'Count updated.'
+		flash[:notice] = 'Welcome to ' + @friend.name + "."
 		redirect_to :controller=> 'brands', :action => 'show', :id => @friend
 	else  
 		flash[:notice] = "failed update count."  

@@ -20,7 +20,7 @@
   <% else %>
     <% for f in @brand.friends %> 
       <li><%= f.name %> 
-          (<%= link_to "Visit", {:controller => 'brands', :action => 'add_count', :brand_id => @brand, :friend_id => f } %>)
+          (<%= link_to "Visit", {:controller => 'brands', :action => 'add_count', :brand_id => @brand, :friend_id => f }, :target => '_blank'  %>)
       </li>   
     <% end %>
   <% end %>
