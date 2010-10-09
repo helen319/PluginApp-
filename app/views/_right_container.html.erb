@@ -1,0 +1,13 @@
+
+<div id="subcontainer-right">
+<% if user_signed_in? %>
+     <h3>Your Brands: </h3> 
+     <% current_user.brands.each do |b| %>
+       <td><%= link_to b.name, b %></td><br/>
+         <% b.friends.each do |f| %>
+          <li><%= link_to f.name, f %></li>
+         <% end %>
+     <% end %>
+     <h4><%= link_to 'New Brand', new_brand_path %></h4>
+<% end %>
+</div>

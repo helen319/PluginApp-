@@ -1,22 +1,10 @@
-<h1>Listing brands</h1>
 
 
-<% if user_signed_in? %>
-  <br>
-     <h2>Your Brands: </h2> <h4><%= link_to 'New Brand', new_brand_path %></h4>
-     <% current_user.brands.each do |b| %>
-       <td><%= b.name %></td>
-       <td><%= b.address %></td> 
-       <td><%= link_to 'Show', b %></td>
-       <td><%= link_to 'Edit', edit_brand_path(b) %></td>
-       <td><%= link_to 'Destroy', b, :confirm => 'Are you sure?', :method => :delete %></td><br>
-     <% end %>
-<% end %>
-<br>
-<br>
+<h1>Brands</h1>
 
-
-<table>
+<strong>SEARCH BAR HERE</strong>
+<br/><br/>
+<table cellpadding="5">
   <tr>
     <th>Name</th>
     <th>Address</th>
@@ -27,13 +15,11 @@
 
 <% @brands.each do |b| %>
   <tr>
-    <td><%= b.name %></td>
+    <td><%= link_to b.name, b %> 
     <td><%= b.address %></td> 
-    <td><%= link_to 'Show', b %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
+</div>
 
 

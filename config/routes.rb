@@ -1,7 +1,6 @@
 Newapp::Application.routes.draw do
   
   devise_for :users
-  # root :to => "brands#index" 
   root :to => "home#index" 
   resources :brands
   match ':controller/:action/:brand_id:friend_id'

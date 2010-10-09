@@ -1,5 +1,35 @@
 body {
   margin: 0;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+#container {
+  width: 65%;
+  float: right;
+  margin-right: 25%;
+  background-color: #FFF;
+  padding:  1%;
+  border: solid 1px darkgray;
+  #subcontainer-main{
+    padding: 1%;
+    float: left;
+    width: 75%;
+    border-right: 1px solid darkgray;   
+  }
+  #subcontainer-right {
+    padding: 1%;
+    float: right;
+    margin: 0px;
+    width: 20%;
+  }
+}
+
+#footer{
+  float: right;
+  margin-right: 25%;
+  padding-top: 10px;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 13px;
 }
 #user_nav {
   overflow: hidden;
@@ -12,19 +42,134 @@ body {
   color: white;
   font-size: 13px;
 
-  a { color: white }
+  a { color: black }
   #logo {
     overflow: hidden;
     display: inline-block;
-    padding-left: 30px;
-
+    padding-left: 2%;
     img {
-      width: 120px;
+      width: 180px;
     }
   }
   #login_info {
     display: inline-block;
     float: right;
-    padding-right: 20px;
+    padding-right: 25%;
+    a { color: white }
   }
 }
+
+
+
+/*- Menu Tabs --------------------------- */
+
+#tabs {
+  float:right;
+  width:100%;
+  background:#000;
+  font-size:93%;
+  line-height:normal;
+  }
+#tabs ul {
+margin:0;
+padding:0px 25% 0px 0px;
+list-style:none;
+  }
+#tabs li {
+  display:inline;
+  margin:0;
+  padding:0;
+  }
+#tabs a {
+  float:right;
+  background:url("../images/tableft.gif") no-repeat left top;
+  margin:0;
+  padding:0 0 0 3px;
+  text-decoration:none;
+  }
+#tabs a span {
+  float:right;
+  display:block;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  background:url("../images/tabright.gif") no-repeat right top;
+  padding:5px 15px 4px 6px;
+  color:#FFF;
+  }
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#tabs a span {float:none;}
+/* End IE5-Mac hack */
+#tabs a:hover span {
+  color:#FFF;
+  }
+#tabs a:hover {
+  background-position:0% -42px;
+  }
+#tabs a:hover span {
+  background-position:100% -42px;
+  }
+  
+
+
+
+/*- Notice/Alert/Error --------------------------- */
+
+#flash_notice, #flash_alert, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 14px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 8px;
+}
+
+#error_explanation ul {
+  margin: 2px 24px;
+}
+
+#error_explanation ul li {
+  font-size: 14px;
+  list-style: disc;
+}
+
+
+a:link {color: #3366CC; text-decoration:none;}
+a:active {color: #3366CC; text-decoration:none;}
+a:visited {color: #3366CC; text-decoration:none;}
+a:hover {color: #3366CC; text-decoration: underline;}
+
+
