@@ -3,7 +3,9 @@
     <h3>Your Links: </h3> 
 
     <% current_user.brands.each do |b| %>
-      <% show_current = "show_current" if b.id == @brand.id %>
+      <% if !@brand.nil? %>
+        <% show_current = "show_current" if b.id == @brand.id %>
+      <% end %>
       <%= link_to(b) do %>
       <div id="side_link" class="<%= show_current %>">
         <%= b.name %>
