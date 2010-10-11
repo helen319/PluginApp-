@@ -1,10 +1,20 @@
-
 <div id="subcontainer-right">
-<% if user_signed_in? %>
-     <h3>Your Links: </h3> 
-     <% current_user.brands.each do |b| %>
-       <td><%= link_to b.name, b %></td><br/>
-     <% end %>
-     <h4><%= link_to 'New Brand', new_brand_path %></h4>
-<% end %>
+  <% if user_signed_in? %>
+    <h3>Your Links: </h3> 
+
+    <% current_user.brands.each do |b| %>
+      <% show_current = "show_current" if b.id == @brand.id %>
+      <%= link_to(b) do %>
+      <div id="side_link" class="<%= show_current %>">
+        <%= b.name %>
+        <span id="link_address"><%= b.address %></span>
+      </div>
+      <% end %>
+    <% end %>
+
+    <%= link_to( new_brand_path ) do %>
+      <div id="side_link">+ New Link</div>  
+    <% end %>
+    
+  <% end %>
 </div>
