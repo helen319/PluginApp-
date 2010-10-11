@@ -1,22 +1,13 @@
-
-<p>
-  <b>Name:</b>
-  <%= @brand.name %>
-</p>
-<p>
-  <b>Address:</b>
-  <%= @brand.address %>
-</p>
-
-<p>
-  <b>Info:</b>
-  <%= @brand.info %>
-</p>
+<div id="linkinfo">
+  <span id="name"><%= @brand.name %></span>
+  <span id="address"><%= @brand.address %></span>
+  <span id="info"><%= @brand.info %></span>
+</div>
 
 <td><%= link_to 'Edit', edit_brand_path(@brand) %></td> |
 <td><%= link_to 'Destroy', @brand, :confirm => 'Are you sure?', :method => :delete %></td><br>
 
-<h2>Friends</h2>
+<h3>LinkTo</h3>
 <ul>
   <% if @brand.friends.count == 0 %>
 	<td>No friends</td>

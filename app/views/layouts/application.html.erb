@@ -11,29 +11,33 @@
 <body>
 
 <div id="user_nav">
+
   <div id="logo">
     <%= link_to image_tag("logo_transparent.png"), :root %>
   </div>
+
+  <div id="tabs">
+    <ul>
+      <li><a href="#" title="Home">Home</a></li>
+      <li><a href="#" title="Message">Message</a></li>
+    </ul>
+  </div>
+
   <% if user_signed_in? %>
     <div id="login_info">
 	  <%= current_user.email %> | 
 	  <%= link_to "Sign out", destroy_user_session_path %>
     </div>
   <% end %>
+
 </div>
-<div id="tabs">
-  <ul>
-    <li><a href="#" title="Profile"><span>Account</span></a></li>
-    <li><a href="#" title="Message"><span>Message</span></a></li>
-    <li><a href="#" title="Home"><span>Home</span></a></li>
-  </ul>
-</div>
+
 
 <div id="container">
   <%- flash.each do |name, msg| -%>
     <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
   <%- end -%> 
-  <%= render (:partial => '/right_container') %>
+  <%= render (:partial => 'layouts/right_container') %>
   <div id="subcontainer-main">
     <%= yield %>
   </div>
