@@ -1,9 +1,13 @@
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; }
-p {
-  font-weight: bold;
-}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, serif;
+  color: #3C4848; }
+
+h3 {
+  font-weight: normal; }
 
 #container {
   width: 65%;
@@ -11,17 +15,21 @@ p {
   margin-right: 25%;
   background-color: #FFF;
   padding: 1%;
-  border: solid 1px darkgray; }
+  border-bottom: solid 1px darkgray; }
   #container #subcontainer-main {
     padding: 1%;
     float: left;
-    width: 75%;
-    border-right: 1px solid darkgray; }
+    width: 75%; }
   #container #subcontainer-right {
     padding: 1%;
     float: right;
     margin: 0px;
-    width: 20%; }
+    width: 20%;
+    background-color: #f0f3f4;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px; }
 
 #footer {
   float: right;
@@ -44,63 +52,42 @@ p {
     color: black; }
   #user_nav #logo {
     overflow: hidden;
-    display: inline-block;
-    padding-left: 2%; }
+    float: left;
+    padding-left: 2%;
+    padding-right: 50px; }
     #user_nav #logo img {
-      width: 180px; }
+      width: 110px; }
   #user_nav #login_info {
-    display: inline-block;
     float: right;
-    padding-right: 25%; }
+    padding-right: 30px; }
     #user_nav #login_info a {
       color: white; }
+  #user_nav #tabs {
+    float: left;
+    font-size: 93%; }
+    #user_nav #tabs ul {
+      margin: 0;
+      padding: 0; }
+      #user_nav #tabs ul li {
+        display: inline; }
+        #user_nav #tabs ul li a {
+          font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+          color: white;
+          text-decoration: none; }
 
-/*- Menu Tabs --------------------------- */
-#tabs {
-  float: right;
-  width: 100%;
-  background: #000;
-  font-size: 93%;
-  line-height: normal; }
-
-#tabs ul {
-  margin: 0;
-  padding: 0px 25% 0px 0px;
-  list-style: none; }
-
-#tabs li {
-  display: inline;
-  margin: 0;
-  padding: 0; }
-
-#tabs a {
-  float: right;
-  background: url("../images/tableft.gif") no-repeat left top;
-  margin: 0;
-  padding: 0 0 0 3px;
-  text-decoration: none; }
-
-#tabs a span {
-  float: right;
+#linkinfo #name {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: #3C4848; }
+#linkinfo #address {
+  font-size: 11px;
+  color: #DD467B;
   display: block;
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  background: url("../images/tabright.gif") no-repeat right top;
-  padding: 5px 15px 4px 6px;
-  color: #FFF; }
-
-/* Commented Backslash Hack hides rule from IE5-Mac \*/
-#tabs a span {
-  float: none; }
-
-/* End IE5-Mac hack */
-#tabs a:hover span {
-  color: #FFF; }
-
-#tabs a:hover {
-  background-position: 0% -42px; }
-
-#tabs a:hover span {
-  background-position: 100% -42px; }
+  padding: 0 0 0 0;
+  margin-bottom: 3px; }
+#linkinfo #info {
+  font-size: 11px;
+  color: gray; }
 
 /*- Notice/Alert/Error --------------------------- */
 #flash_notice, #flash_alert, #flash_error {
