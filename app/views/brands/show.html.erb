@@ -13,74 +13,71 @@
 
 
 <h3>LinkTo</h3>
-  <% if @brand.friends.count == 0 %>
-
-    <td>No friends</td>
-
-  <% else %>
-      
-    <div id="linkto">
-      <table>
-        <tr>
-          <th>Name</th>
+  <div id="linkto">
+    <table>
+      <tr>
+        <th>Name</th>
+        <% if user_signed_in? and @brand.user == current_user %>
           <th>Visitors to</th>
           <th>Visitors from</th>
-          <th></th>
-          <th></th>
-        </tr>
-
+        <%end%>
+        <th></th>
+        <th></th>
+      </tr>
+      
+      <% @friendships_as_brand.each_with_index do |f,i| %>
         <tr>
-          <% @friendships_as_brand.each_with_index do |f,i| %>
           <td><%= link_to  Brand.find(f.friend_id).name, Brand.find(f.friend_id) %></td>
-          <td><%= f.count_index %></td>
-          <td><%= @friendships_as_friend[i].count_index %></td>
+          <% if user_signed_in? and @brand.user == current_user %>
+            <td><%= f.count_index %></td>
+            <td><%= @friendships_as_friend[i].count_index %></td>
           <% end %>
         </tr>
+      <% end %>
 
-        <% if user_signed_in? and @brand.user == current_user %>
+      <% if user_signed_in? and @brand.user == current_user %>
 
-          <!-- Requested friends -->
-          <% for friend in @brand.requested_friends %> 
-            <tr>
-              <td><%= link_to friend.name, friend %></td>
-              <td>--</td>
-              <td>--</td>
-              <td id="status">Waiting for confirmation</td>
-              <td>
-                <%= link_to 'Cancel', 
-                  {:controller => 'friendships', 
-                  :action => 'destroy', 
-                  :brand_id => @brand, 
-                  :friend_id => friend }, :method => :delete, :confirm => 'Are you sure?' %>
-              </td>
-            </tr>
-          <% end %>
-
-          <!-- Pending friends -->
-          <% for friend in @brand.pending_friends %> 
-            <tr>
-
-              <td><%= link_to friend.name, friend %></td>
-              <td>--</td>
-              <td>--</td>
-              <td id="status">Request</td>
-              <td>
-                <%= link_to 'Accept', 
-                  {:controller => 'friendships', 
-                  :action => 'update', 
-                  :brand_id => @brand, 
-                  :friend_id => friend } %> | 
-                <%= link_to 'Reject', 
-                  {:controller => 'friendships', 
-                  :action => 'destroy', :brand_id => @brand, :friend_id => friend }, 
-                  :method => :delete, :confirm => 'Reject friend request! Are you sure?' %>
-              </td>
-            </tr>
-          <% end %>
+        <!-- Requested friends -->
+        <% for friend in @brand.requested_friends %> 
+          <tr>
+            <td><%= link_to friend.name, friend %></td>
+            <td>--</td>
+            <td>--</td>
+            <td id="status">Waiting for confirmation</td>
+            <td>
+            <%= link_to 'Cancel', 
+              {:controller => 'friendships', 
+              :action => 'destroy', 
+              :brand_id => @brand, 
+              :friend_id => friend }, :method => :delete, :confirm => 'Are you sure?' %>
+           </td>
+          </tr>
         <% end %>
-      </table>
-    </div>
-  <% end %>
+        </tr>
+
+        <!-- Pending friends -->
+        <% for friend in @brand.pending_friends %> 
+          <tr>
+            <td><%= link_to friend.name, friend %></td>
+            <td>--</td>
+            <td>--</td>
+            <td id="status">Request</td>
+            <td>
+              <%= link_to 'Accept', 
+                {:controller => 'friendships', 
+                :action => 'update', 
+                :brand_id => @brand, 
+                :friend_id => friend } %> | 
+              <%= link_to 'Reject', 
+                {:controller => 'friendships', 
+                :action => 'destroy', :brand_id => @brand, :friend_id => friend }, 
+                :method => :delete, :confirm => 'Reject friend request! Are you sure?' %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %> <!-- End of if user check-->
+    </table>
+  </div>
 
 <% if user_signed_in? and @brand.user == current_user %>
 
@@ -96,6 +93,8 @@
     <% end %>
   <% end %>
   </ul>
+  
+<%= link_to 'Back', brands_path %>
+
 <% end %>
 
-<%= link_to 'Back', brands_path %>

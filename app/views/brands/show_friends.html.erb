@@ -1,28 +1,57 @@
+<!DOCTYPE html>
 
-<p>
-  <b>Name:</b>
-  <%= @brand.name %>
-</p>
-<p>
-  <b>Address:</b>
-  <%= @brand.address %>
-</p>
+<head>
+  <title>Webapp</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+</head>
 
-<p>
-  <b>Info:</b>
-  <%= @brand.info %>
-</p>
+<body>
 
-<h2>Friends</h2>
-<ul>
-  <% if @brand.friends.count == 0 %>
-    <td>No friends</td>
-  <% else %>
-    <% for f in @brand.friends %> 
-      <li><%= f.name %> 
-          (<%= link_to "Visit", {:controller => 'brands', :action => 'add_count', :brand_id => @brand, :friend_id => f }, :target => '_blank'  %>)
-      </li>   
-    <% end %>
-  <% end %>
-</ul>
+<div id="user_nav">
+  <div id="logo">
+    <%= link_to image_tag("logo_transparent.png"), :root %>
+  </div>
+</div>
+
+<div id="container">
+
+  <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%- end -%> 
+
+  <div id="subcontainer-main">	
+	<div id="linkinfo">
+	  <span id="name"><%= @brand.name %></span>
+	  <span id="address"><%= @brand.address %></span>
+	  <span id="info"><%= @brand.info %></span>
+	</div>
+	
+	<h2>Friends</h2>
+	<ul>
+	  <% if @brand.friends.count == 0 %>
+		<td>No friends</td>
+	  <% else %>
+		<% for f in @brand.friends %> 
+		  <li><%= f.name %> 
+			  (<%= link_to "Visit", {:controller => 'brands', :action => 'add_count', :brand_id => @brand, :friend_id => f }, :target => '_blank'  %>)
+		  </li>   
+		<% end %>
+	  <% end %>
+	</ul>
+  </div>
+
+</div>
+
+<div id="footer">
+  OrangeLinks © 2010 |
+  <%= link_to "About", :root %> |
+  <%= link_to "Terms", :root %> |
+  <%= link_to "Help", :root %>
+</div>
+</body>
+</html>
+
+
+
 
