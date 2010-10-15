@@ -12,18 +12,18 @@
   <script type="text/javascript" src="http://orange-links.heroku.com/colorbox/jquery.colorbox.js"></script>
   <link rel="stylesheet" media="screen" type="text/css" href="http://orange-links.heroku.com/colorbox/colorbox.css"  />
   <script type="text/javascript">
-    $(document).ready(function() {	
-	  $("#open_colorbox").colorbox({width:"30%", height:"60%", iframe:true});
+    jQuery(document).ready(function() {	
+	  jQuery("#open_colorbox").colorbox({width:"30%", height:"60%", iframe:true});
 	});
 	
-	$(document).ready(function() {
+	jQuery(document).ready(function() {
       var temp = $(".choose_brand");
-      $(temp).hide();
+      jQuery(temp).hide();
     });
     
-	$(document).ready(function(){
-      $(".choose_button").click(function(){
-        $(".choose_brand").slideToggle("slow");
+	jQuery(document).ready(function(){
+      jQuery(".choose_button").click(function(){
+        jQuery(".choose_brand").slideToggle("slow");
       });
     });
   </script>
@@ -36,6 +36,31 @@
 	  }
   </style>
   <!-- End input for widget --> 
+
+  <!-- Input for tab scripts --> 
+  <script type="text/javascript" src="/tab_bar/scripts/prototype.lite.js"></script>
+  <script type="text/javascript" src="/tab_bar/scripts/moo.fx.js"></script>
+  <script type="text/javascript" src="/tab_bar/scripts/moo.fx.pack.js"></script>
+  <link rel="stylesheet" media="screen" type="text/css" href="/tab_bar/tab_style.css"  />
+  <script type="text/javascript">
+  function init(){
+	var stretchers = document.getElementsByClassName('box');
+	var toggles = document.getElementsByClassName('tab');
+	var myAccordion = new fx.Accordion(
+		toggles, stretchers, {opacity: false, height: true, duration: 600}
+	);
+	//hash functions
+	var found = false;
+	toggles.each(function(h3, i){
+		var div = Element.find(h3, 'nextSibling');
+			if (window.location.href.indexOf(h3.title) > 0) {
+				myAccordion.showThisHideOpen(div);
+				found = true;
+			}
+		});
+		if (!found) myAccordion.showThisHideOpen(stretchers[0]);
+  }
+  </script>
 
 </head>
 

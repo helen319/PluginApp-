@@ -3,7 +3,6 @@ Newapp::Application.routes.draw do
 
   devise_for :users
   root :to => "home#index" 
-  get 'brands/widget_generator'
   resources :brands 
   match ':controller(/:action(/:id))'
   match ':controller/:action/:brand_id:friend_id'

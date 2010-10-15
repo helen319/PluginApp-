@@ -31,6 +31,27 @@ class BrandsController < ApplicationController
       @friendships_as_brand << friendship1
       @friendships_as_friend << friendship2
     end    
+    
+    # variable for instructions to widget
+    @script = '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://orange-links.heroku.com/colorbox/jquery.colorbox.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="http://orange-links.heroku.com/colorbox/colorbox.css" />
+
+<script type="text/javascript">
+  $(document).ready(function() {	
+    $("#open_colorbox").colorbox({width:"30%", height:"60%", iframe:true});
+  });
+</script>
+    
+<style type="text/css">
+  #widget {
+	position:fixed;
+	top:250px;
+	right: 0px;
+  }
+</style>'
+    @widget_div = '<div id="widget"><a id="open_colorbox" href="http://orange-links.heroku.com/brands/show_friends/' + params[:id] + '"> <%= image_tag("http://orange-links.heroku.com/images/logo.png") %></a></div>'
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @brand }
@@ -119,32 +140,6 @@ class BrandsController < ApplicationController
 	else  
 		flash[:notice] = "failed update count."  
 		redirect_to :controller=> 'brands', :action => 'show_friends', :id => @brand
-    end
-  end
-  
-  def widget_generator
-    @script = '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://orange-links.heroku.com/colorbox/jquery.colorbox.js"></script>
-<link rel="stylesheet" media="screen" type="text/css" href="http://orange-links.heroku.com/colorbox/colorbox.css" />
-
-<script type="text/javascript">
-  $(document).ready(function() {	
-    $("#open_colorbox").colorbox({width:"30%", height:"60%", iframe:true});
-  });
-</script>
-    
-<style type="text/css">
-  #widget {
-	position:fixed;
-	top:250px;
-	right: 0px;
-  }
-</style>'
-    @widget_div = '<div id="widget"><a id="open_colorbox" href="http://orange-links.heroku.com/brands/show_friends/' + params[:id] + '"> <%= image_tag("http://orange-links.heroku.com/images/logo.png") %></a></div>'
-    
-    respond_to do |format|
-      format.html # widget_generator.html.erb
-      format.xml  { render :xml => @brand }
     end
   end
   

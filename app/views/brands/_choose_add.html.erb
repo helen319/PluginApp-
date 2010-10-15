@@ -1,0 +1,17 @@
+<h4>Choose a brand to be friends with <%= @brand.name%>:</h4>
+  <table cellpadding="5">
+	<tr>
+	  <th>Name</th>
+	  <th>Address</th>
+	  <th></th>
+	</tr>
+	<% @user_brands.each do |b| %>
+	  <% if b != @friend %>
+		<tr>
+		  <td><%= b.name %> 
+		  <td><%= b.address %></td> 
+		  <td><%= link_to 'Add',  {:controller=> 'friendships', :action => 'create', :brand_id => b, :friend_id => @brand }%></td> 
+	   </tr>
+	 <% end %>
+   <% end %>
+ </table>
