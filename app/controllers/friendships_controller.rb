@@ -62,6 +62,7 @@ def destroy
   redirect_to :controller => 'brands', :action => 'show', :id => @brand 
 end
 
+
 end
 
 

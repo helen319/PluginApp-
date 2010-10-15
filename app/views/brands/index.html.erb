@@ -1,9 +1,14 @@
 
 
-<h1>Brands</h1>
+<h2>Brands</h2>
 
-<strong>SEARCH BAR HERE</strong>
-<br/><br/>
+<% form_tag brands_path, :method => :get, :remote => true do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
 <table cellpadding="5">
   <tr>
     <th>Name</th>
@@ -15,11 +20,9 @@
 
 <% @brands.each do |b| %>
   <tr>
+  
     <td><%= link_to b.name, b %> 
     <td><%= b.address %></td> 
   </tr>
 <% end %>
 </table>
-</div>
-
-

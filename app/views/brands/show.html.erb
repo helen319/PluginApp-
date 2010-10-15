@@ -5,8 +5,33 @@
   <span id="info"><%= @brand.info %></span>
 
   <div id="action">
-    <%= link_to 'edit', edit_brand_path(@brand) %>
-    <%= link_to 'destroy', @brand, :confirm => 'Are you sure?', :method => :delete %>
+    <% if user_signed_in? %>
+      <button class="choose_button">Test Open</button> 
+      <div class="choose_brand">
+        <h4>Choose a brand to be friends with <%= @brand.name%>:</h4>
+          <table cellpadding="5">
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+              <th></th>
+            </tr>
+            <% @user_brands.each do |b| %>
+              <% if b != @friend %>
+                <tr>
+                  <td><%= b.name %> 
+                  <td><%= b.address %></td> 
+                  <td><%= link_to 'Add',  {:controller=> 'friendships', :action => 'create', :brand_id => b, :friend_id => @brand }%></td> 
+               </tr>
+             <% end %>
+           <% end %>
+         </table>
+     </div>
+    <% end %>
+    <% if user_signed_in? and @brand.user == current_user %>
+      <%= link_to 'widget', {:controller=> 'brands', :action => 'widget_generator', :id => @brand }%>
+      <%= link_to 'edit', edit_brand_path(@brand) %>
+      <%= link_to 'destroy', @brand, :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>  
   </div>
 
 </div>
@@ -80,20 +105,7 @@
   </div>
 
 <% if user_signed_in? and @brand.user == current_user %>
-
-  <h3>Add New Friends</h3>
-  <ul>
-  <% @brands.each do |f| %>
-    <% if @brand != f %>
-	  <% if @brand.friends.include?(f) == false and @brand.requested_friends.include?(f) == false and @brand.pending_friends.include?(f) == false %>
-	     <li><%= link_to f.name, f %> |
-	    <%= link_to 'Add',  {:controller=> 'friendships', :action => 'create', :brand_id => @brand , :friend_id => f}%> 
-	    </li>
-	  <% end %>
-    <% end %>
-  <% end %>
-  </ul>
-  
+<br><br>  
 <%= link_to 'Back', brands_path %>
 
 <% end %>

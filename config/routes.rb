@@ -1,11 +1,14 @@
 Newapp::Application.routes.draw do
-  
+
+
   devise_for :users
   root :to => "home#index" 
-  resources :brands
-  match ':controller/:action/:brand_id:friend_id'
+  get 'brands/widget_generator'
+  resources :brands 
   match ':controller(/:action(/:id))'
-  match ':controller(/:action(/:id(.:format)))'
+  match ':controller/:action/:brand_id:friend_id'
+
+
    
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -6,14 +6,13 @@ class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.xml
   def index
-    @brands = Brand.all
+    if params[:search]
+      @brands = Brand.find(:all, :conditions => ['name LIKE?', "%#{params[:search]}%"])
+    else 
+      @brands = Brand.all
+    end
     if user_signed_in? and current_user.brands.length == 0
       redirect_to :controller => 'brands', :action => 'new'
-    else 
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml  { render :xml => @brands }
-      end
     end
   end
 
@@ -22,6 +21,7 @@ class BrandsController < ApplicationController
   def show
     @brand = Brand.find(params[:id])
     @brands = Brand.all
+    @user_brands = current_user.brands
     @friends = @brand.friends
     @friendships_as_brand = []
     @friendships_as_friend = []
@@ -121,4 +121,35 @@ class BrandsController < ApplicationController
 		redirect_to :controller=> 'brands', :action => 'show_friends', :id => @brand
     end
   end
+  
+  def widget_generator
+    @script = '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://orange-links.heroku.com/colorbox/jquery.colorbox.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="http://orange-links.heroku.com/colorbox/colorbox.css" />
+
+<script type="text/javascript">
+  $(document).ready(function() {	
+    $("#open_colorbox").colorbox({width:"30%", height:"60%", iframe:true});
+  });
+</script>
+    
+<style type="text/css">
+  #widget {
+	position:fixed;
+	top:250px;
+	right: 0px;
+  }
+</style>'
+    @widget_div = '<div id="widget"><a id="open_colorbox" href="http://orange-links.heroku.com/brands/show_friends/' + params[:id] + '"> <%= image_tag("http://orange-links.heroku.com/images/logo.png") %></a></div>'
+    
+    respond_to do |format|
+      format.html # widget_generator.html.erb
+      format.xml  { render :xml => @brand }
+    end
+  end
+  
+  
 end
+
+
+

@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-}
+  font-family: Georgia, serif;
+  color: #3C4848;
+  }
 
 a:link {color: #3366CC; text-decoration:none;}
 a:active {color: #3366CC; text-decoration:none;}
@@ -182,7 +183,9 @@ h3 {
   }
 }
 
-
+ 
+ 
+ 
 /*- Notice/Alert/Error --------------------------- */
 
 #flash_notice, #flash_alert, #flash_error {
@@ -237,6 +240,7 @@ h3 {
     }
   }
 }
+
 
 
 
