@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: Georgia, serif;
+  font-size: 14px;
   color: #3C4848; }
 
 a:link {
@@ -102,33 +103,41 @@ h3 {
       color: white; }
   #user_nav #tabs {
     float: left;
+    padding-left: 30px;
     font-size: 93%; }
     #user_nav #tabs ul {
       margin: 0;
       padding: 0; }
       #user_nav #tabs ul li {
-        display: inline; }
+        display: inline;
+        padding-right: 5px; }
         #user_nav #tabs ul li a {
           font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
           color: white;
           text-decoration: none; }
 
-#linkinfo #name {
-  font-family: Georgia, serif;
-  font-size: 18px;
-  color: #3C4848; }
-#linkinfo #address {
-  font-size: 11px;
-  color: #DD467B;
-  display: block;
-  padding: 0 0 0 0;
-  margin-bottom: 3px; }
-#linkinfo #info {
-  font-size: 11px;
-  color: gray; }
-#linkinfo #action a {
-  font-size: 13px;
-  padding-right: 5px; }
+#linkinfo {
+  padding-left: 180px; }
+  #linkinfo #user {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    color: #3C4848; }
+  #linkinfo #name {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: #3C4848; }
+  #linkinfo #address {
+    font-size: 11px;
+    color: #DD467B;
+    display: block;
+    padding: 0 0 0 0;
+    margin-bottom: 3px; }
+  #linkinfo #info {
+    font-size: 11px;
+    color: gray; }
+  #linkinfo #action a {
+    font-size: 13px;
+    padding-right: 5px; }
 
 #linkto table {
   font-size: 12px;

@@ -81,14 +81,15 @@
 
   <div id="tabs">
     <ul>
-      <li><a href="#" title="Home">Home</a></li>
-      <li><a href="#" title="Message">Message</a></li>
+      <li><%= link_to "Home", :root %></li>
+      <li><%= link_to "Profile", current_user %></li>
+      <li><%= link_to "Message", messages_path %></li>
     </ul>
   </div>
 
   <% if user_signed_in? %>
     <div id="login_info">
-	  <%= current_user.email %> | 
+	  <%= current_user.username %> | 
 	  <%= link_to "Sign out", destroy_user_session_path %>
     </div>
   <% end %>

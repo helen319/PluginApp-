@@ -1,14 +1,12 @@
 Newapp::Application.routes.draw do
 
-
   devise_for :users
+  resources :users, :brands , :messages
   root :to => "home#index" 
-  resources :brands 
   match ':controller(/:action(/:id))'
-  match ':controller/:action/:brand_id:friend_id'
+  match ':controller/:action/:brand_id:/friend_id'
 
 
-   
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,52 @@
+<h1>Listing messages</h1>
+
+
+<div id="wrapper" >
+	<div id="content">        
+      <h3 class="tab" title="first"><div class="tabtxt"><a href="#">Inbox</a></div></h3>
+        <div class="tab"><h3 class="tabtxt" title="second"><a href="#">Sent messages</a></h3></div>
+      <div class="boxholder">
+		<div class="box">
+          <table cellpadding="5">
+            <tr>
+              <th>Content</th>
+              <th>From</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <% @recieved_messages.each do |message| %>
+              <tr>
+                <td><%= message.content %></td>
+                <td><%= User.find(message.user_id).username %></td>
+                <td><%= link_to 'Show', message %></td>
+                <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
+              </tr>
+            <% end %>
+          </table>
+		</div>
+		<div class="box">
+          <table cellpadding="5">
+            <tr>
+              <th>Content</th>
+              <th>To</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <% @sent_messages.each do |message| %>
+              <tr>
+                <td><%= message.content %></td>
+                <td><%= User.find(message.recipient_id).username %></td>
+                <td><%= link_to 'Show', message %></td>
+                <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
+              </tr>
+            <% end %>
+          </table>		</div>
+	  </div>
+    </div>
+</div>
+<script type="text/javascript">
+	Element.cleanWhitespace('content');
+	init();
+</script>
+
+

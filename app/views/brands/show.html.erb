@@ -1,24 +1,26 @@
-<div id="linkinfo">
+<% if @brand.photo.file? %>
+  <span style="position:absolute;left:50px;"><%= image_tag @brand.photo.url(:small) %></span>
+<% else %>
+  <span style="position:absolute;left:50px;"><img alt="Profile" src="/system/photos/profile.jpg" /></span>
+<% end %>
 
-  <span id="name"><%= @brand.name %></span>
+<div id="linkinfo">
+  <span id="name"><%= @brand.name %></span> by <span id="user"><%= link_to @brand.user.username , @brand.user %></span>
   <span id="address"><%= @brand.address %></span>
   <span id="info"><%= @brand.info %></span>
-
 </div>
 
-
-<div id="wrapper">
-	<div id="content">    
-    
-	<h3 class="tab" title="first"><div class="tabtxt"><a href="#">Friends</a></div></h3>
-    <% if user_signed_in? %>
-      <div class="tab"><h3 class="tabtxt" title="second"><a href="#">Add</a></h3></div>
-    <% end %>
-	<% if user_signed_in? and @brand.user == current_user %>
-	  <div class="tab"><h3 class="tabtxt" title="third"><a href="#">Widget</a></h3></div>
-	  <div class="tab"><h3 class="tabtxt" title="forth"><a href="#">Edit</a></h3></div>
-	<% end %>
-	<div class="boxholder">
+<div id="wrapper" style="padding-top:110px;">
+	<div id="content">        
+      <h3 class="tab" title="first"><div class="tabtxt"><a href="#">Friends</a></div></h3>
+      <% if user_signed_in? %>
+        <div class="tab"><h3 class="tabtxt" title="second"><a href="#">Add</a></h3></div>
+      <% end %>
+	  <% if user_signed_in? and @brand.user == current_user %>
+	    <div class="tab"><h3 class="tabtxt" title="third"><a href="#">Widget</a></h3></div>
+	    <div class="tab"><h3 class="tabtxt" title="forth"><a href="#">Edit</a></h3></div>
+	  <% end %> 
+      <div class="boxholder">
 		<div class="box">
           <%= render 'friends' %>
 		</div>
@@ -31,18 +33,13 @@
 		<div class="box">
           <%= render 'form'%>
 		</div>
-	</div>
+	  </div>
+    </div>
 </div>
-
 <script type="text/javascript">
 	Element.cleanWhitespace('content');
 	init();
 </script>
 
-<% if user_signed_in? and @brand.user == current_user %>
-<br><br>  
-<%= link_to 'Back', brands_path %>
 
-
-<% end %>
 

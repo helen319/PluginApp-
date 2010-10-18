@@ -1,4 +1,4 @@
-<h4>Choose a brand to be friends with <%= @brand.name%>:</h4>
+<h2>Choose a brand to be friends with <%= @brand.name%>:</h2>
   <table cellpadding="5">
 	<tr>
 	  <th>Name</th>
@@ -6,7 +6,7 @@
 	  <th></th>
 	</tr>
 	<% @user_brands.each do |b| %>
-	  <% if b != @friend %>
+	  <% if b != @brand %>
 		<tr>
 		  <td><%= b.name %> 
 		  <td><%= b.address %></td> 

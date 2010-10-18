@@ -111,7 +111,7 @@ class BrandsController < ApplicationController
     @brand.destroy
 
     respond_to do |format|
-      format.html { redirect_to(:back) }
+      format.html { redirect_to(:root) }
       format.xml  { head :ok }
     end
   end
@@ -143,7 +143,12 @@ class BrandsController < ApplicationController
     end
   end
   
-  
+  def remove_photo
+    @brand = Brand.find(params[:id])
+    @brand.destroy_attached_files
+    @brand.save
+    redirect_to @brand
+  end
 end
 
 

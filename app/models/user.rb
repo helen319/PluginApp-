@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :brands,  :dependent => :destroy
+  has_many :messages
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable (:confirmable)
@@ -7,5 +8,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :username
 end

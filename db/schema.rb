@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100923212740) do
+ActiveRecord::Schema.define(:version => 20101018180552) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(:version => 20100923212740) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "friendships", :force => true do |t|
@@ -26,6 +30,14 @@ ActiveRecord::Schema.define(:version => 20100923212740) do
     t.integer  "friend_id"
     t.integer  "count_index"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "recipient_id"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20100923212740) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
