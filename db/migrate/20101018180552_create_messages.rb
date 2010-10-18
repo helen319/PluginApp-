@@ -4,6 +4,7 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :user_id
       t.integer :recipient_id
       t.text :content
+      t.text :status #new/read
 
       t.timestamps
     end

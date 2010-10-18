@@ -15,6 +15,10 @@ class MessagesController < ApplicationController
   # GET /messages/1.xml
   def show
     @message = Message.find(params[:id])
+    if @message.recipient_id == current_user.id
+      @message.status = 'read'
+      @message.save
+    end
     @user = User.find(@message.user_id)
     @recipient = User.find(@message.recipient_id)
     respond_to do |format|
@@ -45,8 +49,14 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
     @message.user_id = params[:sender_id]  
     @message.recipient_id = params[:recipient_id]
+    @message.status = 'new'
+    
     respond_to do |format|
       if @message.save
+        # send a friend_request email to @friend
+        @sender = User.find(params[:sender_id])
+        @recipient = User.find(params[:recipient_id])
+        UserMailer.message_alert(@sender, @recipient).deliver
         format.html { redirect_to(@message, :notice => 'Message was successfully created.') }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
       else

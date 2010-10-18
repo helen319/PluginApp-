@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20101018180552) do
     t.integer  "user_id"
     t.integer  "recipient_id"
     t.text     "content"
+    t.text     "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
