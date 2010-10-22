@@ -1,5 +1,5 @@
 <% if @brand.photo.file? %>
-  <span style="position:absolute;left:50px;"><%= image_tag @brand.photo.url(:small) %></span>
+  <span style="position:absolute;left:50px;"><%= image_tag @brand.photo.url(:original) %></span>
 <% else %>
   <span style="position:absolute;left:50px;"><img alt="Profile" src="/system/photos/profile.jpg" /></span>
 <% end %>
@@ -31,7 +31,8 @@
           <%= render 'install_widget'%>
 		</div>
 		<div class="box">
-          <%= render 'form'%>
+          <%= render 'form'%><br />
+          <%= link_to 'Remove this Link', @brand, :confirm => 'Are you sure?', :method => :delete %>
 		</div>
 	  </div>
     </div>

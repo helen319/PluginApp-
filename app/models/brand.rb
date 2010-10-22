@@ -13,8 +13,8 @@ class Brand < ActiveRecord::Base
   has_many :pending_friends, :through => :friendships, :source => :friend, :conditions => "status = 'pending'"
   has_many :friendships, :dependent => :destroy
 
-  has_attached_file :photo, :dependent => :destroy, :styles => {:small => "150x150>" }
-  validates_attachment_size :photo, :less_than => 5.megabytes
+  has_attached_file :photo, :dependent => :destroy, :styles => {:original => "150x150>", :small =>"50x50>"}
+  validates_attachment_size :photo, :less_than => 3.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 end
 
