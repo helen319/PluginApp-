@@ -6,7 +6,7 @@ gem 'devise', '1.1.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'haml'
-gem 'rmagick', '2.13.1'
+# gem 'rmagick', '2.13.1'
 
 group :test, :development do
   gem "rspec-rails", ">= 2.0.0.beta.22"

@@ -1,3 +1,4 @@
+$pinky: #DD467B; 
 body {
   margin: 0;
   font-family: Georgia, serif;
@@ -27,6 +28,20 @@ h3 {
   font-size: 16px;
 }
 
+.linknode {
+  background-color: white;   
+  color: #3C4848;
+
+  &:hover { background-color: #cccccc; }
+
+  #link_address {
+    display: block;
+    color: $pinky;
+    font-size: 11px;
+  }
+
+}
+
 #container {
   width: 80%;
   background-color: #FFF;
@@ -54,28 +69,15 @@ h3 {
       padding: 8px 0 8px 0;
     }
     #side_link {
-      background-color: white;   
       border-bottom: solid 1px #cccccc;
       width: 80%;
       padding: 5px 20px 5px 20px;
       font-size: 12px;
-      color: #3C4848;
       
       &.show_current {
         background-color: #3C4848;
         color: white;
       }
-
-      &:hover {
-        background-color: #cccccc;
-      }
-
-      #link_address {
-        display: block;
-        color: #DD467B;
-        font-size: 11px;
-      }
-      
     }
   }
 }
@@ -151,7 +153,7 @@ h3 {
   }
   #address {
     font-size: 11px;
-    color: #DD467B;
+    color: $pinky;
     display: block;
     padding: 0 0 0 0;
     margin-bottom: 3px;
@@ -248,6 +250,18 @@ h3 {
     }
   }
 }
+
+#tab_add {
+  font-size: 16px;
+  a { text-decoration: none; }
+
+  #linknode {
+    padding: 10px;
+    @include rounded;
+  }
+
+}
+
 
 
 

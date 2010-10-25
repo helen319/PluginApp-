@@ -7,10 +7,10 @@
         <% show_current = "show_current" if b.id == @brand.id %>
       <% end %>
       <%= link_to(b) do %>
-      <div id="side_link" class="<%= show_current %>">
-        <%= b.name %>
-        <span id="link_address"><%= b.address %></span>
-      </div>
+        <div id="side_link" class="<%= show_current %> linknode">
+          <%= b.name %>
+          <span id="link_address"><%= b.address %></span>
+        </div>
       <% end %>
     <% end %>
 

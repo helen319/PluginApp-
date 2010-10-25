@@ -1,17 +1,23 @@
-<h2>Choose a brand to be friends with <%= @brand.name%>:</h2>
-  <table cellpadding="5">
-	<tr>
-	  <th>Name</th>
-	  <th>Address</th>
-	  <th></th>
-	</tr>
-	<% @user_brands.each do |b| %>
-	  <% if b != @brand %>
-		<tr>
-		  <td><%= b.name %> 
-		  <td><%= b.address %></td> 
-		  <td><%= link_to 'Add',  {:controller=> 'friendships', :action => 'create', :brand_id => b, :friend_id => @brand }%></td> 
-	   </tr>
-	 <% end %>
-   <% end %>
- </table>
+<div id="tab_add">
+
+  <h2>I want to link <%= @brand.name%> to my ...</h2>
+
+  <% @user_brands.each do |b| %>
+    <% next if b == @brand %>
+
+    <% link_to (
+      :controller=> 'friendships', 
+      :action => 'create', 
+      :brand_id => b, 
+      :friend_id => @brand ) do %>
+
+      <div id="linknode" class="linknode">
+        <%= b.name %>
+        <span id="link_address"><%= b.address %></span>
+      </div>
+
+    <% end %>
+
+  <% end %>
+
+</div> <!-- tab_add -->

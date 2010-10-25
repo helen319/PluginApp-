@@ -1,7 +1,6 @@
 body {
   margin: 0;
   font-family: Georgia, serif;
-  font-size: 14px;
   color: #3C4848; }
 
 a:link {
@@ -27,6 +26,16 @@ h1, h2, h3, h4, h5, h6 {
 h3 {
   font-weight: normal;
   font-size: 16px; }
+
+.linknode {
+  background-color: white;
+  color: #3C4848; }
+  .linknode:hover {
+    background-color: #cccccc; }
+  .linknode #link_address {
+    display: block;
+    color: #dd467b;
+    font-size: 11px; }
 
 #container {
   width: 80%;
@@ -54,21 +63,13 @@ h3 {
       margin: 0 0 0 10px;
       padding: 8px 0 8px 0; }
     #container #subcontainer-right #side_link {
-      background-color: white;
       border-bottom: solid 1px #cccccc;
       width: 80%;
       padding: 5px 20px 5px 20px;
-      font-size: 12px;
-      color: #3C4848; }
+      font-size: 12px; }
       #container #subcontainer-right #side_link.show_current {
         background-color: #3C4848;
         color: white; }
-      #container #subcontainer-right #side_link:hover {
-        background-color: #cccccc; }
-      #container #subcontainer-right #side_link #link_address {
-        display: block;
-        color: #DD467B;
-        font-size: 11px; }
 
 #footer {
   float: right;
@@ -128,7 +129,7 @@ h3 {
     color: #3C4848; }
   #linkinfo #address {
     font-size: 11px;
-    color: #DD467B;
+    color: #dd467b;
     display: block;
     padding: 0 0 0 0;
     margin-bottom: 3px; }
@@ -191,3 +192,14 @@ h3 {
     #error_explanation ul li {
       font-size: 14px;
       list-style: disc; }
+
+#tab_add {
+  font-size: 16px; }
+  #tab_add a {
+    text-decoration: none; }
+  #tab_add #linknode {
+    padding: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px; }
