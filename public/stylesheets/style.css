@@ -126,7 +126,8 @@ h3 {
   #linkinfo #name {
     font-family: Georgia, serif;
     font-size: 18px;
-    color: #3C4848; }
+    color: #3C4848;
+    margin-right: 10px; }
   #linkinfo #address {
     font-size: 11px;
     color: #dd467b;

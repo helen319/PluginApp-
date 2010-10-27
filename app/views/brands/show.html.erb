@@ -5,14 +5,14 @@
 <% end %>
 
 <div id="linkinfo">
-  <span id="name"><%= @brand.name %></span> by <span id="user"><%= link_to @brand.user.username , @brand.user %></span>
+  <span id="name"><%= @brand.name %></span> <span id="user">by <%= link_to @brand.user.username , @brand.user %></span>
   <span id="address"><%= @brand.address %></span>
   <span id="info"><%= @brand.info %></span>
 </div>
 
 <div id="wrapper" style="padding-top:110px;">
 	<div id="content">        
-      <h3 class="tab" title="first"><div class="tabtxt"><a href="#">Friends</a></div></h3>
+      <h3 class="tab" title="first"><div class="tabtxt"><a href="#">Link nodes</a></div></h3>
       <% if user_signed_in? %>
         <div class="tab"><h3 class="tabtxt" title="second"><a href="#">Add</a></h3></div>
       <% end %>
