@@ -173,6 +173,7 @@ h3 {
 
 
 #linkto {
+  a { text-decoration: none }
   table {
     font-size: 12px;
     border-collapse: collapse;
@@ -185,8 +186,12 @@ h3 {
     tr {
       td {
         padding: 3px 30px 3px 3px;
-        &#status {
-          color: gray;
+        &#status { color: gray; }
+    
+        #linknode {
+          font-size: 16px;
+          padding: 10px;
+          @include rounded;
         }
 
       }

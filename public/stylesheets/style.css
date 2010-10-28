@@ -141,6 +141,8 @@ h3 {
     font-size: 13px;
     padding-right: 5px; }
 
+#linkto a {
+  text-decoration: none; }
 #linkto table {
   font-size: 12px;
   border-collapse: collapse; }
@@ -152,6 +154,13 @@ h3 {
     padding: 3px 30px 3px 3px; }
     #linkto table tr td#status {
       color: gray; }
+    #linkto table tr td #linknode {
+      font-size: 16px;
+      padding: 10px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -khtml-border-radius: 5px;
+      border-radius: 5px; }
 
 /*- Notice/Alert/Error --------------------------- */
 #flash_notice, #flash_alert, #flash_error {

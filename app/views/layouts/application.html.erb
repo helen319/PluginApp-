@@ -41,24 +41,28 @@
   <script type="text/javascript" src="/tab_bar/scripts/prototype.lite.js"></script>
   <script type="text/javascript" src="/tab_bar/scripts/moo.fx.js"></script>
   <script type="text/javascript" src="/tab_bar/scripts/moo.fx.pack.js"></script>
+
   <link rel="stylesheet" media="screen" type="text/css" href="/tab_bar/tab_style.css"  />
+
   <script type="text/javascript">
   function init(){
-	var stretchers = document.getElementsByClassName('box');
-	var toggles = document.getElementsByClassName('tab');
-	var myAccordion = new fx.Accordion(
-		toggles, stretchers, {opacity: false, height: true, duration: 600}
-	);
-	//hash functions
-	var found = false;
-	toggles.each(function(h3, i){
-		var div = Element.find(h3, 'nextSibling');
-			if (window.location.href.indexOf(h3.title) > 0) {
-				myAccordion.showThisHideOpen(div);
-				found = true;
-			}
-		});
-		if (!found) myAccordion.showThisHideOpen(stretchers[0]);
+
+    var stretchers = document.getElementsByClassName('box');
+    var toggles = document.getElementsByClassName('tab');
+    var myAccordion = new fx.Accordion(
+      toggles, stretchers, {opacity: false, height: true, duration: 600}
+    );
+
+    //hash functions
+    var found = false;
+    toggles.each(function(h3, i){
+      var div = Element.find(h3, 'nextSibling');
+        if (window.location.href.indexOf(h3.title) > 0) {
+          myAccordion.showThisHideOpen(div);
+          found = true;
+        }
+      });
+    if (!found) myAccordion.showThisHideOpen(stretchers[0]);
   }
   </script>
 
