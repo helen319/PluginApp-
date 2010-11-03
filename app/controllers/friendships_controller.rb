@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+before_filter :authenticate_user!, :except => [:add_count]
 
 
 def create
@@ -62,6 +63,23 @@ def destroy
   redirect_to :controller => 'brands', :action => 'show', :id => @brand 
 end
 
+def add_count
+  @brand = Brand.find(params[:brand_id])
+  @friend = Brand.find(params[:friend_id])
+  @friendship = Friendship.find_by_brand_id_and_friend_id(@brand.id, @friend.id)
+  temp = @friendship.count_index
+  params[:friendship] = {:brand_id => @brand.id, :friend_id => @friend.id, :status => 'accepted', :count_index => temp+1}
+  if @friendship.update_attributes(params[:friendship]) 
+  	if @friend.address.index('http://') == nil
+  	  redirect_to "http://" + @friend.address
+	else 
+	  redirect_to @friend.address
+	end
+  else  
+	flash[:notice] = "failed update count."  
+	redirect_to :controller=> 'brands', :action => 'show_friends', :id => @brand
+  end
+end
 
 end
 

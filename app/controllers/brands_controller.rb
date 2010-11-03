@@ -1,6 +1,6 @@
 class BrandsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show, :show_friends, :add_count]
+  before_filter :authenticate_user!, :except => [:show, :show_friends]
   layout "application", :except => [:show_friends]
 
   # GET /brands
@@ -34,12 +34,12 @@ class BrandsController < ApplicationController
     
     # variable for instructions to widget
     @script = '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://orange-links.heroku.com/colorbox/jquery.colorbox.js"></script>
-<link rel="stylesheet" media="screen" type="text/css" href="http://orange-links.heroku.com/colorbox/colorbox.css" />
+<script type="text/javascript" src="http://97.107.133.173/colorbox/jquery.colorbox.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="http://97.107.133.173/colorbox/colorbox.css" />
 
 <script type="text/javascript">
   $(document).ready(function() {	
-    $("#open_colorbox").colorbox({width:"30%", height:"60%", iframe:true});
+    $("#open_colorbox").colorbox({width:"50%", height:"80%", iframe:true});
   });
 </script>
     
@@ -50,7 +50,8 @@ class BrandsController < ApplicationController
 	right: 0px;
   }
 </style>'
-    @widget_div = '<div id="widget"><a id="open_colorbox" href="http://orange-links.heroku.com/brands/show_friends/' + params[:id] + '"> <%= image_tag("http://orange-links.heroku.com/images/logo.png") %></a></div>'
+    @widget_div = '<div id="widget"><a id="open_colorbox" href="http://97.107.133.173/brands/show_friends/' + params[:id] + '"> 
+<%= image_tag("http://97.107.133.173/images/logo.png") %></a></div>'
     
     respond_to do |format|
       format.html # show.html.erb
@@ -124,24 +125,7 @@ class BrandsController < ApplicationController
       format.xml  { render :xml => @brand }
     end
   end
-  
-  def add_count
-    @brand = Brand.find(params[:brand_id])
-    @friend = Brand.find(params[:friend_id])
-    @friendship = Friendship.find_by_brand_id_and_friend_id(@brand.id, @friend.id)
-    temp = @friendship.count_index
-    params[:friendship] = {:brand_id => @brand.id, :friend_id => @friend.id, :status => 'accepted', :count_index => temp+1}
-    if @friendship.update_attributes(params[:friendship]) 
-        if @friend.address.index('http://') == nil
-		  redirect_to "http://" + @friend.address
-		else 
-		  redirect_to @friend.address
-		end
-	else  
-		flash[:notice] = "failed update count."  
-		redirect_to :controller=> 'brands', :action => 'show_friends', :id => @brand
-    end
-  end
+ 
   
   def remove_photo
     @brand = Brand.find(params[:id])

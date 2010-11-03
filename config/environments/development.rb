@@ -23,10 +23,18 @@ Newapp::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   
-  config.action_mailer.default_url_options = { :host => 'localhost:3000'  }
+  config.action_mailer.default_url_options = { :host => '97.107.133.173'  }
   
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
+#   config.action_mailer.smtp_settings = {
+#     :address => 'smtp.sendgrid.net',
+#     :port => '25',
+#     :authentication => :plain,
+#     :domain => 'mydomain.com',
+#     :user_name => 'helen319@hotmail.com',
+#     :password => '319319'
+#   }
+    config.action_mailer.smtp_settings = {
     :address => 'smtp.gmail.com',
     :port => '587',
     :authentication => :plain,
