@@ -19,6 +19,12 @@ class BrandsController < ApplicationController
   # GET /brands/1
   # GET /brands/1.xml
   def show
+    if ENV["RAILS_ENV"] == "development"
+      @ip = "localhost:3000"
+    elsif ENV["RAILS_ENV"] == "production"
+      @ip = "http://97.107.133.173"
+    end
+
     @brand = Brand.find(params[:id])
     @brands = Brand.all
     @user_brands = current_user.brands
@@ -31,11 +37,10 @@ class BrandsController < ApplicationController
       @friendships_as_brand << friendship1
       @friendships_as_friend << friendship2
     end    
-    
     # variable for instructions to widget
     @script = '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://97.107.133.173/colorbox/jquery.colorbox.js"></script>
-<link rel="stylesheet" media="screen" type="text/css" href="http://97.107.133.173/colorbox/colorbox.css" />
+<script type="text/javascript" src="' + @ip + '/colorbox/jquery.colorbox.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="' + @ip + '/colorbox/colorbox.css" />
 
 <script type="text/javascript">
   $(document).ready(function() {	
@@ -50,8 +55,8 @@ class BrandsController < ApplicationController
 	right: 0px;
   }
 </style>'
-    @widget_div = '<div id="widget"><a id="open_colorbox" href="http://97.107.133.173/brands/show_friends/' + params[:id] + '"> 
-<%= image_tag("http://97.107.133.173/images/logo.png") %></a></div>'
+    @widget_div = '
+<div id="widget"><a id="open_colorbox" href="' + @ip + '/brands/show_friends/' + params[:id] + '"><img src="' + @ip + '/images/logo_vertical.png" /></a></div>'
     
     respond_to do |format|
       format.html # show.html.erb
