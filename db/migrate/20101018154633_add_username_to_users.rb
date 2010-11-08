@@ -1,6 +1,6 @@
 class AddUsernameToUsers < ActiveRecord::Migration
   def self.up
-    add_column :users, :username, :string
+    add_column :users, :username, :string, :unique => true
   end
 
   def self.down

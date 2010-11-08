@@ -5,10 +5,10 @@ body {
   color: #3C4848;
   }
 
-a:link {color: #3366CC; text-decoration:none;}
-a:active {color: #3366CC; text-decoration:none;}
-a:visited {color: #3366CC; text-decoration:none;}
-a:hover {color: #3366CC; text-decoration: underline;}
+a:link {color: #3C4848; text-decoration:none;}
+a:active {color: #3C4848; text-decoration:none;}
+a:visited {color: #3C4848; text-decoration:none;}
+a:hover {color: #3C4848; text-decoration: underline;}
 
 @mixin rounded {
     $radius: 5px;
@@ -52,9 +52,15 @@ h3 {
   #subcontainer-main{
     padding: 1%;
     float: left;
-    width: 75%;
+    width: 70%;
   }
-
+  
+  #subcontainer-box{
+    padding: 0px;
+    float: right;
+    margin: 0px;
+  }
+  	
   #subcontainer-right {
     padding: 0px 0 5px 0;
     float: right;
@@ -269,6 +275,32 @@ h3 {
 }
 
 
+/*- Style for Box ---------------------- */
+.box {
+  font-size:13px;
+  width: 20em;
+  margin: auto; }
+.box div {
+  margin: 0.5em 0 0 -2.5em; }
+.box div.topleft {
+  display: block;
+  background: url("../images/box-bg.png") top left no-repeat white;
+  padding: 2.0em 0em 0em 2.0em; }
+.box div.topright {
+  display: block;
+  background: url("../images/box-bg.png") top right no-repeat white;
+  padding: 2.0em;
+  margin: -2.0em 0 0 2.0em; }
+.box div.bottomleft {
+  display: block;
+  height: 45px;
+  margin-top: -2.0em;
+  background: url("../images/box-bg.png") bottom left no-repeat white;  }
+.box div.bottomright {
+  display: block;
+  background: url("../images/box-bg.png") bottom right no-repeat white;
+  height: 45px;
+margin-left: 3.0em;  }
 
 
 

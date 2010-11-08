@@ -1,0 +1,8 @@
+= form_tag new_user_session_path do
+  Username<br />
+  = text_field_tag 'user[username]'
+  <br /><br />
+  Password<br>
+  = password_field_tag 'user[password]'
+  <br /><br />
+  %button Login

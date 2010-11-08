@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-<!DOCTYPE html>
 <head>
   <title>Webapp</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "style.css" %>
   <%= javascript_include_tag :all %>
   <%= csrf_meta_tag %>
   
@@ -106,8 +105,9 @@
   <%- flash.each do |name, msg| -%>
     <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
   <%- end -%> 
-  <%= render (:partial => 'layouts/right_container') %>
-
+  <% if user_signed_in? %>
+    <%= render (:partial => 'layouts/right_container') %>
+  <% end %>
   <div id="subcontainer-main">
     <%= yield %>
   </div>
