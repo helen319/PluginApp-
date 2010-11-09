@@ -206,8 +206,6 @@ h3 {
     #error_explanation ul li {
       font-size: 14px;
       list-style: disc; }
-      
-/*- Style for Tabs ---------------------- */
 
 #tab_add {
   font-size: 16px; }
@@ -220,33 +218,33 @@ h3 {
     -khtml-border-radius: 5px;
     border-radius: 5px; }
 
-/*- Style for Box ---------------------- */
-.box {
+/*- Style for Homepage Box ---------------------- */
+.hp_box {
   font-size: 13px;
   width: 20em;
   margin: auto; }
 
-.box div {
+.hp_box div {
   margin: 0.5em 0 0 -2.5em; }
 
-.box div.topleft {
+.hp_box div.topleft {
   display: block;
   background: url("../images/box-bg.png") top left no-repeat white;
   padding: 2.0em 0em 0em 2.0em; }
 
-.box div.topright {
+.hp_box div.topright {
   display: block;
   background: url("../images/box-bg.png") top right no-repeat white;
   padding: 2.0em;
   margin: -2em 0 0 2em; }
 
-.box div.bottomleft {
+.hp_box div.bottomleft {
   display: block;
   height: 45px;
   margin-top: -2em;
   background: url("../images/box-bg.png") bottom left no-repeat white; }
 
-.box div.bottomright {
+.hp_box div.bottomright {
   display: block;
   background: url("../images/box-bg.png") bottom right no-repeat white;
   height: 45px;

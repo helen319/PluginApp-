@@ -81,16 +81,15 @@
   <div id="logo">
     <%= link_to image_tag("logo2.png"), :root %>
   </div>
-
-  <div id="tabs">
-    <ul>
-      <li><%= link_to "Home", :root %></li>
-      <li><%= link_to "Profile", current_user %></li>
-      <li><%= link_to "Message", messages_path %></li>
-    </ul>
-  </div>
-
+  
   <% if user_signed_in? %>
+    <div id="tabs">
+      <ul>
+        <li><%= link_to "Home", :root %></li>
+        <li><%= link_to "Profile", current_user %></li>
+        <li><%= link_to "Message", messages_path %></li>
+      </ul>
+    </div>
     <div id="login_info">
 	  <%= current_user.username %> | 
 	  <%= link_to "Sign out", destroy_user_session_path %>

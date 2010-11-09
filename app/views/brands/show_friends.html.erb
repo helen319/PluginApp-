@@ -35,7 +35,7 @@
 	<h2>Friends</h2>
 	
 	  <% if @brand.friends.count == 0 %>
-		<td>No friends</td>
+		<%= link_to "Add Friend", :root, :target => '_blank'  %>
 	  <% else %>
 		<% for f in @brand.friends %> 
 		  <li><%= f.name %> 

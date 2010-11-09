@@ -85,7 +85,7 @@ class BrandsController < ApplicationController
     @brand = current_user.brands.build(params[:brand])
       respond_to do |format|
         if @brand.save
-          format.html { redirect_to(@brand, :notice => 'Brand was successfully created.') }
+          format.html { redirect_to(@brand, :notice => 'Link Node was successfully created.') }
           format.xml  { render :xml => @brand, :status => :created, :location => @brand }
         else
           format.html { render :action => "new" }
@@ -98,15 +98,19 @@ class BrandsController < ApplicationController
   # PUT /brands/1.xml
   def update
     @brand = Brand.find(params[:id])
-
-    respond_to do |format|
-      if @brand.update_attributes(params[:brand])
-        format.html { redirect_to(@brand, :notice => 'Brand was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @brand.errors, :status => :unprocessable_entity }
+    if @brand.user == current_user
+      respond_to do |format|
+        if @brand.update_attributes(params[:brand])
+          format.html { redirect_to(@brand, :notice => 'Link Node was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @brand.errors, :status => :unprocessable_entity }
+        end
       end
+    else 
+      #brand's user is not current user, do nothing.
+      redirect_to(:root)
     end
   end
 
@@ -114,11 +118,17 @@ class BrandsController < ApplicationController
   # DELETE /brands/1.xml
   def destroy
     @brand = Brand.find(params[:id])
-    @brand.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(:root) }
-      format.xml  { head :ok }
+    if @brand.user == current_user
+      @brand.destroy
+      respond_to do |format|
+        format.html { redirect_to(:root, :notice => 'Link Node was successfully deleted.') }
+        format.xml  { head :ok }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to(:root)}
+        format.xml  { head :ok }
+      end
     end
   end
   

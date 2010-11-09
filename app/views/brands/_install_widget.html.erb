@@ -1,22 +1,24 @@
-<style type="text/css">
-    textarea {
-      background-color: #f0f3f4;
-      border: 0px;
-      padding: 10px;
-      color: #3C4848;
-      font-size: 11px;
-    }
-</style>
+
 
 <h2>Install the Tab</h2>
 <h3>1. Copy and paste the following code into your HTML just before the closing the head tag:</h3>
 <div id="widget_instruction">
-<textarea readonly="true" class="embed-code primary" cols=105 rows=20 >
+<textarea style="background-color: #f0f3f4;
+      border: 0px;
+      padding: 10px;
+      color: #3C4848;
+      font-size: 11px;"
+      readonly="true" class="embed-code primary" cols=105 rows=17 >
 <%= @script %>
 </textarea>
 
   <h3>2. Copy and paste the following code into your HTML just before the closing body tag:</h3>
-  <textarea  readonly="true" class="embed-code primary" cols=105 rows=3>
+  <textarea style="background-color: #f0f3f4;
+      border: 0px;
+      padding: 10px;
+      color: #3C4848;
+      font-size: 11px;" 
+      readonly="true" class="embed-code primary" cols=105 rows=3>
     <%= @widget_div %>
   </textarea>
 </div>
