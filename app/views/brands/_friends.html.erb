@@ -3,7 +3,7 @@
   <h2><%= @brand.name %> is linked to ... </h2>
   
   <% if @friends.length + @brand.pending_friends.length + @brand.requested_friends.length  == 0 %>
-    <%= link_to "Add Friends", :root, :target => '_blank'  %><br />
+    <%= link_to 'Add Friends', :root %>
   <% else %>
   
   <table>
