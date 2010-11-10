@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Webapp</title>
+  <% if yield(:title) == "" %>
+   <title>LinkNode</title>
+  <% else %>
+    <title>LinkNode | <%= yield(:title) %></title>
+  <% end %>
+  
   <%= stylesheet_link_tag "style.css" %>
   <%= javascript_include_tag :all %>
   <%= csrf_meta_tag %>
@@ -15,16 +20,17 @@
 	  jQuery("#open_colorbox").colorbox({width:"50%", height:"80%", iframe:true});
 	});
 	
-	jQuery(document).ready(function() {
-      var temp = $(".choose_brand");
-      jQuery(temp).hide();
-    });
-    
-	jQuery(document).ready(function(){
-      jQuery(".choose_button").click(function(){
-        jQuery(".choose_brand").slideToggle("slow");
-      });
-    });
+// 	jQuery(document).ready(function() {
+//       var temp = $(".choose_brand");
+//       jQuery(temp).hide();
+//     });
+//     
+// 	jQuery(document).ready(function(){
+//       jQuery(".choose_button").click(function(){
+//         jQuery(".choose_brand").slideToggle("slow");
+//       });
+//     });
+
   </script>
   
   <style type="text/css">
@@ -40,9 +46,7 @@
   <script type="text/javascript" src="/tab_bar/scripts/prototype.lite.js"></script>
   <script type="text/javascript" src="/tab_bar/scripts/moo.fx.js"></script>
   <script type="text/javascript" src="/tab_bar/scripts/moo.fx.pack.js"></script>
-
   <link rel="stylesheet" media="screen" type="text/css" href="/tab_bar/tab_style.css"  />
-
   <script type="text/javascript">
   function init(){
 
@@ -64,7 +68,8 @@
     if (!found) myAccordion.showThisHideOpen(stretchers[0]);
   }
   </script>
-
+  <!-- End input for tab scripts -->
+ 
 </head>
 
 <body>
@@ -91,7 +96,7 @@
       </ul>
     </div>
     <div id="login_info">
-	  <%= current_user.username %> | 
+	  <%= link_to current_user.username, current_user %> | 
 	  <%= link_to "Sign out", destroy_user_session_path %>
     </div>
   <% end %>

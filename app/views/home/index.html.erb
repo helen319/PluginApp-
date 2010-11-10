@@ -1,4 +1,5 @@
 
+  
   <h1>Welcome to Link Node<h1>
   <h4>LinkNode provides website connections so more users can explore your website</h4>
 </div >
@@ -11,6 +12,8 @@
         <h2>Sign In</h2>
         <%= render (:partial => 'login') %>
         <br />
+        <span title="If you remember your password, try logging in with your email">
+          <%= link_to "Forgot your username?", new_user_password_path %></span><br />
         <%= link_to "Forgot your password?", new_user_password_path %><br />
         <%= link_to "Didn't receive confirmation instructions?", new_user_confirmation_path %>
       </div>

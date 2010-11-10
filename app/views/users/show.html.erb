@@ -1,3 +1,5 @@
+<% content_for :title, @user.username %>
+
 <h2><%= @user.username %>'s links:</h2>
 <div style="font-size:12px;">
 <% if current_user == @user %>

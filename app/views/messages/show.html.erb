@@ -1,7 +1,13 @@
+<% content_for :title, "Messages" %>
+
 <h4>From: <%= link_to @user.username, @user %></h4>
 <h4>To: <%= link_to @recipient.username, @recipient %></h4>
 
 <ul>
 <%= @message.content %>
 </ul>
+
+<br />
+<%= link_to 'Back', messages_path %>
+
 

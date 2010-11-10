@@ -1,5 +1,10 @@
-<h1>New brand</h1>
+<% content_for :title, "New Link" %>
+
+<h2>New Link</h2>
 
 <%= render 'form' %>
-<br/>
-<%= link_to 'Back', brands_path %>
+
+<% if current_user.brands.length != 0 %>
+  <br />
+  <%= link_to 'Back', messages_path %>
+<% end %>
