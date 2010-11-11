@@ -4,11 +4,11 @@
 
 <div id="wrapper" >
 	<div id="content">        
-      <h3 class="tab" title="first"><div class="tabtxt"><a href="#">Inbox</a></div></h3>
-        <div class="tab"><h3 class="tabtxt" title="second"><a href="#">Sent messages</a></h3></div>
+      <h3 class="tab" ><div class="tabtxt"><a href="#">Inbox</a></div></h3>
+        <div class="tab"><h3 class="tabtxt" ><a href="#">Sent messages</a></h3></div>
       <div class="boxholder">
 		<div class="box">
-          <table cellpadding="5">
+          <table cellpadding="10">
             <tr>
               <th></th>
               <th>Content</th>
@@ -23,7 +23,7 @@
                     <span style="color:red;">NEW</span>
                   <% end %>
                 </td>
-                <td><%= message.content %></td>
+                <td><%= message.content[0,50] %></td>
                 <td><%= link_to User.find(message.user_id).username , User.find(message.user_id) %></td>
                 <td style="font-size:12px;"><%= link_to 'Show', message %></td>
                 <td style="font-size:12px;"><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -32,7 +32,7 @@
           </table>
 		</div>
 		<div class="box">
-          <table cellpadding="5">
+          <table cellpadding="10">
             <tr>
               <th>Content</th>
               <th>To</th>
@@ -41,7 +41,7 @@
             </tr>
             <% @sent_messages.each do |message| %>
               <tr>
-                <td><%= message.content %></td>
+                <td><%= message.content[0,50] %></td>
                 <td><%= link_to User.find(message.recipient_id).username , User.find(message.recipient_id) %></td>
                 <td style="font-size:12px;"><%= link_to 'Show', message %></td>
                 <td style="font-size:12px;"><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>

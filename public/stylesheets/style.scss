@@ -303,4 +303,21 @@ h3 {
 margin-left: 3.0em;  }
 
 
+/*- Style for Tooltip ---------------------- */
+
+.tooltip {
+font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+background-color:#000;
+border:1px solid #fff;
+padding:10px 10px;
+width:200px;
+display:none;
+color:#fff;
+text-align:left;
+font-size:12px;
+
+/* outline radius for mozilla/firefox only */
+-moz-box-shadow:0 0 10px #000;
+-webkit-box-shadow:0 0 10px #000;
+}
 

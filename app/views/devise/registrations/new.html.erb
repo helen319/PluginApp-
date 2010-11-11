@@ -1,3 +1,4 @@
+
 <% content_for :title, "Sign up" %>
 
 
@@ -10,15 +11,14 @@
   <%= f.text_field :username %></p>
 
   <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
+  <span title="we'll send you a confirmation"><%= f.text_field :email %></span></p>
 
   <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <span title="6 - 20 characters"><%= f.password_field :password %></span></p>
 
   <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <span title="must match the password above"><%= f.password_field :password_confirmation %></span></p>
   
-
   <p><%= f.submit "Sign up" %></p>
 <% end %>
 
