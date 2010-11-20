@@ -1,5 +1,4 @@
 <% content_for :title, @brand.name %>
-
 <% if @brand.photo.file? %>
   <span style="position:absolute;left:50px;"><%= image_tag @brand.photo.url(:original) %></span>
 <% else %>
@@ -14,7 +13,7 @@
 
 <div id="wrapper" style="padding-top:110px;">
 	<div id="content">        
-      <h3 class="tab"><div class="tabtxt"><a href="#">Link nodes</a></div></h3>
+      <h3 class="tab"><div class="tabtxt"><a href="#">Links</a></div></h3>
       <% if user_signed_in? %>
         <div class="tab"><h3 class="tabtxt"><a href="#">Add</a></h3></div>
       <% end %>
@@ -34,7 +33,7 @@
 		</div>
 		<div class="box">
           <%= render 'form'%><br />
-          <%= link_to 'Remove this Link', @brand, :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to 'Remove this LinkNode', @brand, :confirm => 'Are you sure?', :method => :delete %>
 		</div>
 	  </div>
     </div>

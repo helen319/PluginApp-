@@ -3,15 +3,19 @@
   <h2><%= @brand.name %> is linked to ... </h2>
   
   <% if @friends.length + @brand.pending_friends.length + @brand.requested_friends.length  == 0 %>
-    <%= link_to 'Add Friends', :root %>
+    <% link_to (:root) do %>
+      <div id="linknode" class="linknode">
+        Add Links
+      </div>
+    <% end %>
   <% else %>
   
   <table>
     <tr>
       <th></th>
       <% if user_signed_in? && @brand.user == current_user%>
-        <th>Visitors to</th>
-        <th>Visitors from</th>
+        <th>Outgoing</th>
+        <th>Incoming</th>
       <% end %>
       <th></th>
       <th></th>

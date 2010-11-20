@@ -1,5 +1,4 @@
 #wrapper{
-  width: 800px;
   margin: 0 auto;
   float: left;
 }
@@ -11,7 +10,7 @@
 .tab{
   float: left;
   height: 32px;
-  width: 102px;
+  width: 100px;
   margin: 0 1px 0 0;
   text-align: center;
 }

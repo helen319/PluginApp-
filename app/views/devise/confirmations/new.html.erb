@@ -1,3 +1,6 @@
+<div style="position:relative; left:35%; padding: 30px;">
+
+
 <h2>Resend confirmation instructions</h2>
 
 <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
@@ -10,3 +13,5 @@
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
+
+</div>

@@ -19,9 +19,9 @@ class BrandsController < ApplicationController
   # GET /brands/1
   # GET /brands/1.xml
   def show
-    if ENV["RAILS_ENV"] == "development"
+    if RAILS_ENV == "development"
       @ip = "localhost:3000"
-    elsif ENV["RAILS_ENV"] == "production"
+    elsif RAILS_ENV == "production"
       @ip = "http://97.107.133.173"
     end
 

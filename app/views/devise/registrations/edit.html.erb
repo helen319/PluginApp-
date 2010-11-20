@@ -1,3 +1,5 @@
+<div style="position:relative; left:35%; padding: 30px;">
+
 
 <% content_for :title, current_user.username %>
 
@@ -27,5 +29,7 @@
 <% end %>
  
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+</div>
 
 <%= link_to "Back", :back %>
+

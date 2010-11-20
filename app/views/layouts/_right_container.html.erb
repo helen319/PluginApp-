@@ -1,5 +1,4 @@
 <div id="subcontainer-right">
-  <% if user_signed_in? %>
     <h3>Your Link nodes: </h3> 
 
     <% current_user.brands.each do |b| %>
@@ -15,8 +14,6 @@
     <% end %>
 
     <%= link_to( new_brand_path ) do %>
-      <div id="side_link">+ New Link</div>  
+      <div id="side_link">+ New Link Node</div>  
     <% end %>
-    
-  <% end %>
 </div>

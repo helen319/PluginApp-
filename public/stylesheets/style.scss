@@ -43,26 +43,26 @@ h3 {
 }
 
 #container {
-  width: 80%;
-  background-color: #FFF;
+  min-height: 450px;
+  min-width:650px;
+  width: 1200px;
+  margin:10px;
   border-bottom: solid 1px darkgray;
-  padding: 20px 0px 50px 40px;
+  padding: 20px;
   float: left;
 
-  #subcontainer-main{
-    padding: 1%;
-    float: left;
-    width: 70%;
-  }
-  
+  /*- Style for Homepage Box - */
   #subcontainer-box{
-    padding: 0px;
+    width: 200px;
     float: right;
-    margin: 0px;
   }
   	
+  #subcontainer-main {
+    float: left;
+    min-width:450px;
+    width:1000px;
+  }
   #subcontainer-right {
-    padding: 0px 0 5px 0;
     float: right;
     margin: 0px;
     background-color: #f0f3f4;
@@ -90,8 +90,8 @@ h3 {
 
 #footer{
   float: right;
-  margin-right: 25%;
-  padding-top: 10px;
+  padding-right:25%;
+  padding-bottom: 10px;
   font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 13px;
 }
