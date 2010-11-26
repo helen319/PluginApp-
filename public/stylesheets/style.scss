@@ -44,8 +44,8 @@ h3 {
 
 #container {
   min-height: 450px;
-  min-width:650px;
-  width: 1200px;
+  min-width: 900px;
+  width: 90%;
   margin:10px;
   border-bottom: solid 1px darkgray;
   padding: 20px;
@@ -59,8 +59,7 @@ h3 {
   	
   #subcontainer-main {
     float: left;
-    min-width:450px;
-    width:1000px;
+    min-width: 650px;
   }
   #subcontainer-right {
     float: right;
@@ -320,4 +319,14 @@ font-size:12px;
 -moz-box-shadow:0 0 10px #000;
 -webkit-box-shadow:0 0 10px #000;
 }
+
+/*- Style for Sign Up Button ---------------------- */
+.sign_up {
+padding-left: 40%;
+a:link {text-decoration: none; color: white;}
+a:visited {text-decoration: none; color: white;}
+a:active {text-decoration: none; color: white;}
+a:hover {text-decoration: none; color: white;}
+}
+
 

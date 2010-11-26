@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div id="container">
+<div style="padding:20px;">
   <%- flash.each do |name, msg| -%>
     <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
   <%- end -%> 
@@ -23,7 +23,7 @@
     <% else %>
       <span style="position:absolute;"><img alt="Profile" src="/system/photos/profile.jpg" /></span>
     <% end %>
-
+ 
 	<div id="linkinfo">
 	  <span id="name"><%= @brand.name %></span><span id="user">
 	  <span id="address"><%= @brand.address %></span>
@@ -41,13 +41,6 @@
 		<% end %>
 	  <% end %>
 	</ul>
-  </div>
-</div>
-<div id="footer">
-  OrangeLinks © 2010 |
-  <%= link_to "About", :root %> |
-  <%= link_to "Terms", :root %> |
-  <%= link_to "Help", :root %>
 </div>
 </body>
 </html>
